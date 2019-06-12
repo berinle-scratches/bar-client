@@ -1,0 +1,11 @@
+---
+applications:
+  - name: bar
+    buildpacks:
+      - java_buildpack_offline
+    path: build/libs/bar-client-0.0.1.jar
+    memory: 1G
+    routes:
+      - route: bar-aae.apps.pcfone.io
+    env:
+      EUREKA_URI: https://registry-aae.apps.pcfone.io/eureka
