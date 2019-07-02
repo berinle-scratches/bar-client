@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: bar
+  - name: bar-green
     buildpacks:
       - java_buildpack_offline
     path: build/libs/bar-client-0.0.1.jar
@@ -9,3 +9,6 @@ applications:
       - route: ((route))
     env:
       EUREKA_URI: https://((registry-route))/eureka
+      JAVA_OPTS: "-javaagent:/home/vcap/app/BOOT-INF/lib/applicationinsights-agent-2.3.1.jar"
+      APP_INSIGHT_INSTRUMENTATION_KEY: ((app-insight-instrumentation-key))
+

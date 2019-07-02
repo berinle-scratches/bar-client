@@ -1,11 +1,26 @@
 eureka:
   client:
+    healthcheck:
+      enabled: true
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-#  instance:
-#    prefer-ip-address: true
+    registry-fetch-interval-seconds: 5 #30
+  instance:
+      lease-renewal-interval-in-seconds: 2 #30
+      lease-expiration-duration-in-seconds: 2 #90
+      initial-status: out_of_service
 
 spring:
   security:
     user:
       password: s3cret
+
+azure:
+  application-insights:
+    instrumentation-key: ${APP_INSIGHT_INSTRUMENTATION_KEY:your-default-key-here}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

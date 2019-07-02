@@ -9,6 +9,10 @@ group = 'com.berinle.cflinuxfs3'
 version = '0.0.1'
 sourceCompatibility = '1.8'
 
+configurations {
+	appInsightLib
+}
+
 repositories {
 	mavenCentral()
 }
@@ -23,7 +27,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	//app insight
+	implementation 'com.microsoft.azure:applicationinsights-spring-boot-starter:1.1.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	appInsightLib files('libs/applicationinsights-agent-2.3.1.jar')
+	configurations.compile.extendsFrom(configurations.appInsightLib)
 }
 
 dependencyManagement {
